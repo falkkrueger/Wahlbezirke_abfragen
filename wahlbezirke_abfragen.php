@@ -23,7 +23,8 @@ function wahlbezirk_abfragen_form() {
 function wahlbezirk_abfragen() {
     if ( isset( $_POST['submit'] ) ) {
         $strasse = $_POST["strasse"];
-        $hausnummer = $_POST["hausnummer"];
+        $unbereinigte_hausnummer = $_POST["hausnummer"];
+        $hausnummer = preg_replace("/[^0-9]/", "", $unbereinigte_hausnummer);
 
         // Datenbankverbindung herstellen
         $servername = "[servername]";
